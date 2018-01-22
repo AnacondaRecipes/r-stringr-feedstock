@@ -10,8 +10,8 @@ package:
 source:
   fn: stringr_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/stringr_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/stringr/stringr_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/stringr_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/stringr/stringr_{{ version }}.tar.gz
   sha256: 61d0b30768bbfd7c0bb89310e2de5b7b457ac504538acbcca50374b46b16129a
 
 
