@@ -1,4 +1,4 @@
-{% set version = '1.2.0' %}
+{% set version = '1.3.0' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,37 +12,33 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/stringr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/stringr/stringr_{{ version }}.tar.gz
-  sha256: 61d0b30768bbfd7c0bb89310e2de5b7b457ac504538acbcca50374b46b16129a
-
-
-  # patches:
-   # List any patch files here
-   # - fix.patch
+  sha256: 23b048d2344cafa10a3480f8d52ab818525c6fdf7210290635f3a10de772bb1d
 
 build:
   merge_build_host: True  # [win]
   # If this is a new build for the same version, increment the build number.
   number: 0
 
-
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, knitr, htmltools, htmlwidgets, rmarkdown, covr
+# Suggests: covr, htmltools, htmlwidgets, knitr, rmarkdown, testthat
 requirements:
   build:
 
   host:
     - r-base
+    - r-glue
     - r-magrittr
-    - r-stringi >=0.4.1
+    - r-stringi >=1.1.6
 
   run:
     - r-base
+    - r-glue
     - r-magrittr
-    - r-stringi >=0.4.1
+    - r-stringi >=1.1.6
 
 test:
   commands:
@@ -74,25 +70,25 @@ extra:
 # The original CRAN metadata for this package was:
 
 # Package: stringr
-# Version: 1.2.0
 # Title: Simple, Consistent Wrappers for Common String Operations
+# Version: 1.3.0
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre", "cph")), person("RStudio", role = c("cph", "fnd")) )
 # Description: A consistent, simple and easy to use set of wrappers around the fantastic 'stringi' package. All function and argument names (and positions) are consistent, all functions deal with "NA"'s and zero length vectors in the same way, and the output from one function is easy to feed into the input of another.
-# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre", "cph")), person("RStudio", role = "cph") )
 # License: GPL-2 | file LICENSE
-# Depends: R (>= 2.14)
-# Imports: stringi (>= 0.4.1), magrittr
-# Suggests: testthat, knitr, htmltools, htmlwidgets, rmarkdown, covr
-# VignetteBuilder: knitr
 # URL: http://stringr.tidyverse.org, https://github.com/tidyverse/stringr
 # BugReports: https://github.com/tidyverse/stringr/issues
-# RoxygenNote: 6.0.1
+# Depends: R (>= 3.1)
+# Imports: glue, magrittr, stringi (>= 1.1.6)
+# Suggests: covr, htmltools, htmlwidgets, knitr, rmarkdown, testthat
+# VignetteBuilder: knitr
 # LazyData: true
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2017-02-17 15:23:03 UTC; hadley
-# Author: Hadley Wickham [aut, cre, cph], RStudio [cph]
+# Packaged: 2018-01-29 22:45:15 UTC; hadley
+# Author: Hadley Wickham [aut, cre, cph], RStudio [cph, fnd]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2017-02-18 21:23:06
+# Date/Publication: 2018-02-19 19:47:14 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
